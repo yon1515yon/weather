@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Monitor</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f2f5; margin: 0; }
+        .card { background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; width: 300px; }
+        .temp { font-size: 3rem; font-weight: bold; color: #2c3e50; margin: 10px 0; }
+        .coords { color: #7f8c8d; font-size: 0.9rem; }
+        .error { color: #e74c3c; }
+        .footer { margin-top: 20px; font-size: 0.8rem; color: #bdc3c7; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Current Weather</h2>
+        
+        {% if error %}
+            <p class="error">⚠️ {{ error }}</p>
+        {% else %}
+            <div class="temp">{{ temperature }} {{ unit }}</div>
+            <p class="coords">Location: {{ location }}</p>
+        {% endif %}
+
+        <div class="footer">
+            Generated in {{ render_time }}s<br>
+            Powered by Open-Meteo
+        </div>
+    </div>
+</body>
+</html>
